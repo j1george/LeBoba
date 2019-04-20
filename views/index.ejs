@@ -1,17 +1,51 @@
-<h1>Le Boba</h1>
+<!doctype html>
+<html lang="en">
 
-<div>
-    <h3>Milk Tea <input type="text" /></h3> 
-    <br/>
-    <h3>Fruit Tea <input type="text" /></h3>
-</div>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<a href="#">Submit</a>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <title>Hello, world!</title>
+</head>
 
-<div>
-    <h2>Pending</h1>
-    <ul>
-        <li></li>
-    </ul>
-</div>
+<body>
+    <h1>Le Boba</h1>
+
+    <form action="/orders" , method="POST">
+        <div>
+            <h3>Milk Tea <input name="milkTea" type="text" /></h3>
+            <h3>Fruit Tea <input name="fruitTea" type="text" /></h3>
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <div>
+        <h2>Pending</h1>
+            <ul id="pending">
+            </ul>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+
+    <script>
+        let pendingDiv = document.querySelector('#pending');
+        fetch('/orders')
+          .then( response => response.json())
+          .then( response => {
+              
+              let li = document.createElement('li');
+              li.textContent = 'milkTea ' + response['0'].milkTea + ' fruitTea ' +  + response['0'].fruitTea;
+
+              pendingDiv.appendChild(li);
+          });
+    </script>
+</body>

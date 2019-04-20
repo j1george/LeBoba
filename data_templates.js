@@ -12,7 +12,7 @@ const Items = {
 };
 
 const Order = {
-    id,
+    id: null,
     Items
 };
 
@@ -23,6 +23,6 @@ const Order = {
 
 module.exports = {
     Order,
-    Item,
+    Items,
     // Customer
 };
