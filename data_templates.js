@@ -1,15 +1,21 @@
 const Order = {
-    id: 0,
+    id,
     isComplete: False,
     items: [],
-    customerEmail: ""
+    customerEmail
 };
 
 const Item = {
-    name: ""
-}
+    name
+};
 
 const Customer = {
-    email: "",
+    email,
     orders: []
-}
+};
+
+module.exports = {
+    Order,
+    Item,
+    Customer
+};
